@@ -12,6 +12,7 @@ public class Money_controller {
         if (reserv.getCustomer().isMember()) {
             if (reserv.getCustomer().getMember().getBalance() < price) {
                 reserv.getCustomer().getMember().decreaseBalance(price);
+                if()
                 payment = reserv.getCustomer().getMember().getBalance() + price * 2 / 100;
             }
 
@@ -32,5 +33,8 @@ public class Money_controller {
             revenue += reservation.getStayDay() * processPayment(reserv, reservation.getRoom().getPrice());
         }
         return revenue;
+    }
+    public static boolean isCreditCard(){
+
     }
 }
