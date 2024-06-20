@@ -9,13 +9,23 @@ public class Reservation {
     private ReservationStatus status;
     private Room room;
     private Customer customer;
+    private Payment paymentType;
 
-    public Reservation(int idReservation, int stayDay, ReservationStatus status, Room room, Customer customer) {
+    public Reservation(int idReservation, int stayDay, ReservationStatus status, Room room, Customer customer, Payment paymentType) {
         this.idReservation = idReservation;
         this.stayDay = stayDay;
         this.status = status;
         this.room = room;
         this.customer = customer;
+        this.paymentType = paymentType;
+    }
+
+    public Payment getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(Payment paymentType) {
+        this.paymentType = paymentType;
     }
 
     public Room getRoom() {

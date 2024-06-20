@@ -2,7 +2,7 @@ package model.classes;
 
 import java.util.Date;
 
-public class Payment {
+public abstract class Payment {
     private int transactionNumber;
     private double amount;
     private Date dateOfTransaction;

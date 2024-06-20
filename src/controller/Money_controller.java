@@ -1,8 +1,7 @@
 package controller;
 
 import model.DataDummy;
-import model.classes.Customer;
-import model.classes.Reservation;
+import model.classes.*;
 import model.enums.CustomerType;
 
 public class Money_controller {
@@ -12,8 +11,10 @@ public class Money_controller {
         if (reserv.getCustomer().isMember()) {
             if (reserv.getCustomer().getMember().getBalance() < price) {
                 reserv.getCustomer().getMember().decreaseBalance(price);
-                if()
                 payment = reserv.getCustomer().getMember().getBalance() + price * 2 / 100;
+                if (reserv.getPaymentType() instanceof CardPayment) {
+                    payment += price * 2 / 100;
+                }
             }
 
             if (reserv.getCustomer().getMember().getType() == CustomerType.VIP) {
@@ -33,8 +34,5 @@ public class Money_controller {
             revenue += reservation.getStayDay() * processPayment(reserv, reservation.getRoom().getPrice());
         }
         return revenue;
-    }
-    public static boolean isCreditCard(){
-
     }
 }

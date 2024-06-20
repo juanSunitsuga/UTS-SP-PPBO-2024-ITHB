@@ -1,12 +1,10 @@
 package model;
 
-import model.classes.Customer;
-import model.classes.Member;
-import model.classes.Reservation;
-import model.classes.Room;
+import model.classes.*;
 import model.enums.CustomerType;
 import model.enums.ReservationStatus;
 
+import java.util.Date;
 import java.util.HashMap;
 
 public class DataDummy {
@@ -21,11 +19,11 @@ public class DataDummy {
         roomMap.put("capsule", new Room(2, 1000000, 4, "401-403"));
 
         Reservation[] reservation = {
-                new Reservation(1, 1, ReservationStatus.PAID, roomMap.get("deluxe"), customer),
-                new Reservation(2, 3, ReservationStatus.PAID, roomMap.get("deluxe"), customer),
-                new Reservation(3, 1, ReservationStatus.PAID, roomMap.get("deluxe"), customer),
-                new Reservation(4, 2, ReservationStatus.PAID, roomMap.get("deluxe"), customer),
-                new Reservation(5, 5, ReservationStatus.PAID, roomMap.get("deluxe"), customer),
+                new Reservation(1, 1, ReservationStatus.PAID, roomMap.get("deluxe"), customer, onlinePayment),
+                new Reservation(2, 3, ReservationStatus.PAID, roomMap.get("deluxe"), customer, onlinePayment),
+                new Reservation(3, 1, ReservationStatus.PAID, roomMap.get("deluxe"), customer, cardPayment),
+                new Reservation(4, 2, ReservationStatus.PAID, roomMap.get("deluxe"), customer, onlinePayment),
+                new Reservation(5, 5, ReservationStatus.PAID, roomMap.get("deluxe"), customer, cardPayment),
 
         };
         reservationMap.put(customer.getIdCustomer(), reservation[0]);
@@ -35,8 +33,27 @@ public class DataDummy {
         reservationMap.put(customer.getIdCustomer(), reservation[4]);
     }
 
+    private static Payment onlinePayment = new OnlinePayment(1023, roomMap.get("capsule").getPrice(), new Date(), "BankHB");
+    private static Payment cardPayment = new CardPayment(1024, roomMap.get("capsule").getPrice(), new Date(), "hahahihi", "credit");
+
     public static HashMap<String, Room> getRoomMap() {
         return roomMap;
+    }
+
+    public static Payment getOnlinePayment() {
+        return onlinePayment;
+    }
+
+    public static void setOnlinePayment(Payment onlinePayment) {
+        DataDummy.onlinePayment = onlinePayment;
+    }
+
+    public static Payment getCardPayment() {
+        return cardPayment;
+    }
+
+    public static void setCardPayment(Payment cardPayment) {
+        DataDummy.cardPayment = cardPayment;
     }
 
     public static void setRoomMap(HashMap<String, Room> roomMap) {
