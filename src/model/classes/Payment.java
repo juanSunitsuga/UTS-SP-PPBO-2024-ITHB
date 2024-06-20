@@ -7,6 +7,12 @@ public class Payment {
     private double amount;
     private Date dateOfTransaction;
 
+    public Payment(int transactionNumber, double amount, Date dateOfTransaction) {
+        this.transactionNumber = transactionNumber;
+        this.amount = amount;
+        this.dateOfTransaction = dateOfTransaction;
+    }
+
     public int getTransactionNumber() {
         return transactionNumber;
     }

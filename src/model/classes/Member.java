@@ -2,9 +2,14 @@ package model.classes;
 
 import model.enums.CustomerType;
 
-public class Member extends Customer{
+public class Member{
     private double balance;
     private CustomerType type;
+
+    public Member(CustomerType type) {
+        this.balance = 1000000;
+        this.type = type;
+    }
 
     public double getBalance() {
         return balance;
@@ -12,6 +17,14 @@ public class Member extends Customer{
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public void addBalance(double balance) {
+        this.balance += balance;
+    }
+
+    public void decreaseBalance(double balance) {
+        this.balance -= balance;
     }
 
     public CustomerType getType() {

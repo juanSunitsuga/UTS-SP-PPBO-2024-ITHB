@@ -5,6 +5,36 @@ public class Customer {
     private String name;
     private String email;
     private String company;
+    private boolean isMember;
+    private Member member;
+
+    public Customer(int idCustomer, String name, String email, String company, boolean isMember, Member member) {
+        this.idCustomer = idCustomer;
+        this.name = name;
+        this.email = email;
+        this.company = company;
+        this.isMember = isMember;
+        this.member = member;
+    }
+
+    public boolean isMember() {
+        return isMember;
+    }
+
+    public void setMember(boolean member) {
+        isMember = member;
+    }
+
+    public Member getMember() {
+        if (isMember()) {
+            return member;
+        }
+        return null;
+    }
+
+    public void setNewMember(Member member) {
+        this.member = member;
+    }
 
     public int getIdCustomer() {
         return idCustomer;

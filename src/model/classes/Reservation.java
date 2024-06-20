@@ -1,15 +1,50 @@
 package model.classes;
 
+import model.DataDummy;
 import model.enums.ReservationStatus;
 
 public class Reservation {
     private int idReservation;
     private int stayDay;
     private ReservationStatus status;
+    private Room room;
+    private Customer customer;
 
-    public void bookRoom(){}
-    public void cancelBooking(){}
-    public void checkAvailability(){}
+    public Reservation(int idReservation, int stayDay, ReservationStatus status, Room room, Customer customer) {
+        this.idReservation = idReservation;
+        this.stayDay = stayDay;
+        this.status = status;
+        this.room = room;
+        this.customer = customer;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void bookRoom(String tipeKamar) {
+        this.room = DataDummy.getRoomMap().get(tipeKamar);
+    }
+
+    public void cancelBooking() {
+        this.status = ReservationStatus.CANCELLED;
+    }
+
+    public boolean checkAvailability() {
+        return status == ReservationStatus.PAID;
+    }
 
     public int getIdReservation() {
         return idReservation;

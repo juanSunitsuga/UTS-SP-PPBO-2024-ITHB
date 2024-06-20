@@ -1,8 +1,17 @@
 package model.classes;
 
+import java.util.Date;
+
 public class CardPayment extends Payment{
     private String cardNumber;
     private String cardType;
+
+    public CardPayment(int transactionNumber, double amount, Date dateOfTransaction, String cardNumber, String cardType) {
+        super(transactionNumber, amount, dateOfTransaction);
+        this.cardNumber = cardNumber;
+        this.cardType = cardType;
+    }
+
 
     public String getCardNumber() {
         return cardNumber;
