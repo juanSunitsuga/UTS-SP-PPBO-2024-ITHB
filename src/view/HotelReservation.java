@@ -1,5 +1,6 @@
 package view;
 
+import controller.Money_controller;
 import model.DataDummy;
 import model.classes.Customer;
 import model.classes.Payment;
@@ -29,5 +30,8 @@ public class HotelReservation {
 
         // cancelBook() Example
         DataDummy.getReservationMap().get(1).cancelBooking();
+
+        // calculateTotalRevenue() Example
+        double totalRevenue = Money_controller.calculateTotalRevenue();
     }
 }

@@ -28,10 +28,10 @@ public class Money_controller {
         return payment;
     }
 
-    public static double calculateTotalRevenue(Reservation reserv) {
+    public static double calculateTotalRevenue() {
         double revenue = 0;
         for (Reservation reservation : DataDummy.getReservationMap().values()) {
-            revenue += reservation.getStayDay() * processPayment(reserv, reservation.getRoom().getPrice());
+            revenue += reservation.getStayDay() * processPayment(reservation, reservation.getRoom().getPrice());
         }
         return revenue;
     }
